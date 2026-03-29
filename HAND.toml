@@ -1,0 +1,18 @@
+[hand]
+name = "atlas"
+display_name = "Atlas — ES Consulting AI"
+description = "Enterprise AI Solutions Architect for ES Consulting. Autonomous sales agent with web research, company analysis, ROI estimation, competitive intelligence, and lead generation."
+version = "1.0.0"
+author = "ES Consulting"
+
+[schedule]
+# Runs on-demand (not scheduled)
+enabled = false
+
+[tools]
+required = ["web_search", "web_fetch", "web_scrape"]
+optional = ["file_write", "file_read", "shell"]
+
+[settings]
+max_turns = 50
+temperature = 0.8
