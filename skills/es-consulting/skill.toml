@@ -1,0 +1,44 @@
+[skill]
+name = "es-consulting-sales"
+version = "1.0.0"
+description = "ES Consulting sales intelligence: company analysis, ROI estimation, competitive positioning, lead capture, and React component generation for live demos"
+author = "ES Consulting"
+license = "MIT"
+tags = ["sales", "ai-consulting", "react", "lead-gen"]
+
+[runtime]
+type = "python"
+entry = "src/main.py"
+
+[[tools.provided]]
+name = "analyze_prospect"
+description = "Deep analysis of a prospect company — their AI maturity, pain points, opportunities, and which ES Consulting solutions fit. Returns structured data AND a React component for visual display."
+input_schema = { type = "object", properties = { company = { type = "string", description = "Company name" }, industry = { type = "string", description = "Industry if known" } }, required = ["company"] }
+
+[[tools.provided]]
+name = "calculate_roi"
+description = "Calculate projected ROI for an AI implementation with ES Consulting. Returns data and a React visualization component."
+input_schema = { type = "object", properties = { company_size = { type = "string", description = "startup, mid-market, enterprise, or fortune-500" }, use_case = { type = "string", description = "The AI use case" }, current_cost = { type = "number", description = "Current annual cost of the process" } }, required = ["company_size", "use_case"] }
+
+[[tools.provided]]
+name = "compare_vendors"
+description = "Compare ES Consulting against competitors (Accenture, Deloitte, McKinsey, in-house, OpenAI). Returns comparison data and a React table component."
+input_schema = { type = "object", properties = { competitor = { type = "string", description = "The competitor to compare against" } }, required = ["competitor"] }
+
+[[tools.provided]]
+name = "capture_lead"
+description = "Capture prospect information and schedule an intro call with Rudy and Justin (ES Consulting founders). THIS IS THE CLOSE."
+input_schema = { type = "object", properties = { name = { type = "string" }, email = { type = "string" }, company = { type = "string" }, project = { type = "string" }, urgency = { type = "string", description = "exploring, planning, ready-to-start, urgent" } }, required = ["email"] }
+
+[[tools.provided]]
+name = "show_portfolio"
+description = "Display ES Consulting's portfolio of real client deployments as a rich visual component. Use when someone asks about past work or proof."
+input_schema = { type = "object", properties = { focus = { type = "string", description = "Optional: filter by industry or client name" } } }
+
+[[tools.provided]]
+name = "demo_swarm"
+description = "Run a live swarm intelligence demonstration showing multi-agent coordination. Returns animated visualization data."
+input_schema = { type = "object", properties = { task = { type = "string", description = "The task to decompose" }, agents = { type = "number", description = "Number of agents (3-12)" } }, required = ["task"] }
+
+[requirements]
+tools = ["web_search", "web_fetch"]
