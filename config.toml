@@ -1,9 +1,18 @@
 api_listen = "0.0.0.0:4200"
 
 [default_model]
+provider = "anthropic"
+model = "claude-sonnet-4-20250514"
+api_key_env = "ANTHROPIC_API_KEY"
+
+# Fallback model
+[fallback_model]
 provider = "openai"
 model = "gpt-4o"
 api_key_env = "OPENAI_API_KEY"
 
 [memory]
-decay_rate = 0.05
+decay_rate = 0.02
+
+[cors]
+allowed_origins = ["https://esconsulting.vercel.app", "https://esconsulting.io", "http://localhost:5173"]
