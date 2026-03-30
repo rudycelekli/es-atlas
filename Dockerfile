@@ -1,7 +1,18 @@
 FROM debian:bookworm-slim
 
-RUN apt-get update && apt-get install -y curl ca-certificates python3-minimal && rm -rf /var/lib/apt/lists/*
+# Install system deps + Chromium for browser tools
+RUN apt-get update && apt-get install -y \
+    curl ca-certificates python3-minimal \
+    chromium chromium-driver \
+    fonts-liberation fonts-noto-color-emoji \
+    && rm -rf /var/lib/apt/lists/*
 
+# Set Chromium env vars for OpenFang browser tools
+ENV CHROME_BIN=/usr/bin/chromium
+ENV CHROMIUM_BIN=/usr/bin/chromium
+ENV PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium
+
+# Install OpenFang
 RUN curl -fsSL https://openfang.sh/install | sh
 
 ENV PATH="/root/.openfang/bin:${PATH}"
