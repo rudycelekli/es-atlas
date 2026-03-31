@@ -25,6 +25,7 @@ COPY SKILL.md /root/.openfang/hands/atlas/SKILL.md
 COPY HAND.toml /root/.openfang/hands/atlas/HAND.toml
 COPY skills/es-consulting/skill.toml /root/.openfang/skills/es-consulting/skill.toml
 COPY skills/es-consulting/src/main.py /root/.openfang/skills/es-consulting/src/main.py
+COPY skills/es-consulting/src/ruvector_memory.py /root/.openfang/skills/es-consulting/src/ruvector_memory.py
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 RUN chmod +x /root/.openfang/skills/es-consulting/src/main.py

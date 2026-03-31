@@ -40,5 +40,20 @@ name = "demo_swarm"
 description = "Run a live swarm intelligence demonstration showing multi-agent coordination. Returns animated visualization data."
 input_schema = { type = "object", properties = { task = { type = "string", description = "The task to decompose" }, agents = { type = "number", description = "Number of agents (3-12)" } }, required = ["task"] }
 
+[[tools.provided]]
+name = "memory_recall"
+description = "Recall relevant memories and winning strategies from RuVector HNSW-indexed conversation history. Call at conversation start and when prospect mentions their industry."
+input_schema = { type = "object", properties = { query = { type = "string", description = "Search query — prospect industry, pain points, or context" }, industry = { type = "string", description = "Industry to match winning patterns" }, limit = { type = "number", description = "Max results (default 5)" } }, required = ["query"] }
+
+[[tools.provided]]
+name = "memory_store"
+description = "Store conversation outcome for future learning. Call when a conversation ends with a conversion, scheduled call, or lost prospect."
+input_schema = { type = "object", properties = { conversation_id = { type = "string" }, industry = { type = "string" }, approach = { type = "string", description = "The sales approach used" }, outcome = { type = "string", description = "converted, scheduled, lost, or nurturing" }, summary = { type = "string" }, turns = { type = "number" } }, required = ["industry", "outcome"] }
+
+[[tools.provided]]
+name = "memory_stats"
+description = "Get RuVector memory statistics — total patterns learned, win rates by industry, HNSW index health."
+input_schema = { type = "object", properties = {} }
+
 [requirements]
 tools = ["web_search", "web_fetch"]

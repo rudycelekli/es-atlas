@@ -7,6 +7,11 @@ api_key_env = "ANTHROPIC_API_KEY"
 
 [memory]
 decay_rate = 0.02
+backend = "ruvector"
+hnsw_enabled = true
+sona_adaptation = true
+ewc_enabled = true
+trajectory_learning = true
 
 [cors]
 allowed_origins = ["https://esconsulting.vercel.app", "https://esconsulting.io", "http://localhost:5173"]
